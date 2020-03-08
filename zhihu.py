@@ -20,7 +20,7 @@ except Exception:
 soup = BeautifulSoup(driver.page_source,'html.parser')
 k = 0
 info = []
-while k<10:
+while k < 10: #increase the limit to read more info
     b = soup.find('button',{'class':'Button QuestionAnswers-answerButton Button--blue Button--spread'})
     soup = BeautifulSoup(driver.page_source,'html.parser')
     contents = soup.find('div', id="TopicMain")
@@ -50,7 +50,7 @@ while k<10:
     k += 1
 for inf in info:
     print(inf)
-    
+
 sort_by_votes = sorted(info, key=lambda x: x['votes'])
 titles = [i['title'] for i in sort_by_votes]
 votes = [i['votes'] for i in sort_by_votes]
@@ -59,7 +59,7 @@ comments = [i['comments'] for i in sort_by_votes]
 votes_rank_bar = Bar('Votes Ranking')
 # is_convert=True swaps X,Y. is_label_show=True label_pos='right' displays Y values on the sight side.
 votes_rank_bar.add('', titles, votes, is_convert=True, is_label_show=True, label_pos='right')
-votes_rank_bar 
+votes_rank_bar
 
 comments_bar = Bar('Comments')
 comments_bar.add('', titles, comments, is_convert=True, is_label_show=True, label_pos='right')
